@@ -11,7 +11,7 @@ We chose a three-layer structure to clearly separate user interactions, business
 1. **Presentation Layer**
 
 This is where the user interacts with the system through API calls.
-It contains services that receive requests and then call to business logic
+It contains services that receive requests and then call the business logic
 
 ***Note :***
 
@@ -29,7 +29,7 @@ This layer centralizes the business logic to avoid duplicating the rules across 
 3. **Persistence Layer**
 
 The persistence layer is responsible for all operations related to data and the database.
-It ensures the reading, writing, and updating of data while adhering to the storage structure using Data Access Objects.
+It ensures the reading, writing, and updating data while adhering to the storage structure using Data Access Objects.
 
 ***Note :***
 

@@ -16,7 +16,7 @@ These classes define the heart of the system's behavior, following object-orient
 
 ---
 
-## 2. Explication des entités
+## 1. Explanation of entities
 
 ### **User**
 - **Role** : Represents a platform user (host or guest).  
@@ -53,7 +53,7 @@ These classes define the heart of the system's behavior, following object-orient
 
 ---
 
-## 3. Relations entre entités
+## 2. Relationships between entities
 
 - **User → Place (1..*)** : A user can own multiple places.  
 - **User → Review (1..*)** : A user can write multiple reviews. 

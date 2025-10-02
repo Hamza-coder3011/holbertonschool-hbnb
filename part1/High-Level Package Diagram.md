@@ -22,6 +22,11 @@ This layer should never access the database directly; it always goes through the
 The business logic layer contains all the rules and core logic of the application defined in ModelClasses.
 This is where the main entities are defined and managed with the HBNB Facade.
 
+The **Facade Pattern** (`HBnBFacade`) centralizes business logic interactions, simplifying the communication from the Presentation Layer to the Business Logic Layer. It ensures:
+- Clear separation of concerns.
+- Simplified maintenance and testing.
+- Unified access to business operations.
+
 ***Note :***
 
 This layer centralizes the business logic to avoid duplicating the rules across multiple services or controllers.

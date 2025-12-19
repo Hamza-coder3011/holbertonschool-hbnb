@@ -32,9 +32,7 @@ class UserList(Resource):
         try:
             facade.create_user(user_data)
             new_user = facade.get_user_by_email(user_data["email"])
-
             return new_user.to_dict(excluded_attr=["password"]), 201
-
         except Exception as e:
             return {'error': str(e)}, 400
         
@@ -42,7 +40,7 @@ class UserList(Resource):
     def get(self):
         """Retrieve a list of users"""
         users = facade.get_users()
-        return [user.to_dict(excluded_attr=["password"]) for user in users], 200
+        return [user.to_dict(excluded_attr=[]) for user in users], 200
     
 @api.route('/<user_id>')
 class UserResource(Resource):
@@ -53,7 +51,7 @@ class UserResource(Resource):
         user = facade.get_user(user_id)
         if not user:
             return {'error': 'User not found'}, 404
-        return user.to_dict(excluded_attr=["password"]), 200
+        return user.to_dict(), 200
 
     @jwt_required()
     @api.expect(user_model)
@@ -66,17 +64,13 @@ class UserResource(Resource):
         user_data = api.payload
         sub = get_jwt_identity()
         is_admin = get_jwt().get("is_admin", False)
-
         if sub != user_id or not is_admin:
             return {'error': 'Cannot access to this resource'}, 403
-
         user = facade.get_user(user_id)
         if not user:
             return {'error': 'User not found'}, 404
-
         try:
             facade.update_user(user_id, user_data)
-            return user.to_dict(excluded_attr=["password"]), 200
-
+            return user.to_dict(), 200
         except Exception as e:
             return {'error': str(e)}, 400
